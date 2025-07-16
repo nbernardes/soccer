@@ -35,6 +35,7 @@ defmodule Soccer.MixProject do
       {:absinthe, "~> 1.7"},
       {:absinthe_plug, "~> 1.5"},
       {:bandit, "~> 1.5"},
+      {:dataloader, "~> 2.0.0"},
       {:dns_cluster, "~> 0.1.1"},
       {:ecto_sql, "~> 3.10"},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},

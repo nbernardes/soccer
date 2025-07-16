@@ -7,6 +7,8 @@ defmodule Soccer.Player do
 
   import Ecto.Changeset
 
+  alias Soccer.PlayerTeam
+
   @type t :: %__MODULE__{
           id: integer(),
           slug: Ecto.UUID.t(),
@@ -22,6 +24,9 @@ defmodule Soccer.Player do
     field :name, :string
     field :age, :integer
     field :position, Ecto.Enum, values: @player_positions
+
+    has_one :player_team, PlayerTeam
+    has_one :team, through: [:player_team, :team]
 
     timestamps()
   end

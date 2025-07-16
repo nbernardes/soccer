@@ -9,7 +9,8 @@ import Config
 
 config :soccer,
   ecto_repos: [Soccer.Repo],
-  generators: [timestamp_type: :utc_datetime]
+  generators: [timestamp_type: :utc_datetime],
+  max_query_depth: 5
 
 # Configures the endpoint
 config :soccer, SoccerWeb.Endpoint,
