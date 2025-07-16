@@ -17,7 +17,20 @@ defmodule SoccerWeb.Router do
   scope "/", SoccerWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", HomeLive, :home
+    live "/players/:slug", PlayerLive.Show
+    live "/teams/:slug", TeamLive.Show
+  end
+
+  scope "/api" do
+    pipe_through :api
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: SoccerWeb.Schema,
+      interface: :simple,
+      context: %{pubsub: SoccerWeb.Endpoint}
+
+    forward "/", Absinthe.Plug, schema: SoccerWeb.Schema
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
@@ -35,16 +48,5 @@ defmodule SoccerWeb.Router do
       live_dashboard "/dashboard", metrics: SoccerWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
-  end
-
-  scope "/" do
-    pipe_through :api
-
-    forward "/graphiql", Absinthe.Plug.GraphiQL,
-      schema: SoccerWeb.Schema,
-      interface: :simple,
-      context: %{pubsub: SoccerWeb.Endpoint}
-
-    forward "/", Absinthe.Plug, schema: SoccerWeb.Schema
   end
 end

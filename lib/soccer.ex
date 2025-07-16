@@ -16,8 +16,24 @@ defmodule Soccer do
   defdelegate search(search_query, limit), to: Services.Search, as: :call
 
   @spec get_team_by_slug(String.t()) :: Result.t(Team.t())
-  def get_team_by_slug(slug) do
-    Repo.get_by(Team, slug: slug)
+  def get_team_by_slug(slug, opts \\ []) do
+    preload = Keyword.get(opts, :preload, [])
+
+    Team
+    |> where(slug: ^slug)
+    |> preload(^preload)
+    |> Repo.one()
+    |> Result.ok_or_not_found()
+  end
+
+  @spec get_player_by_slug(String.t()) :: Result.t(Player.t())
+  def get_player_by_slug(slug, opts \\ []) do
+    preload = Keyword.get(opts, :preload, [])
+
+    Player
+    |> where(slug: ^slug)
+    |> preload(^preload)
+    |> Repo.one()
     |> Result.ok_or_not_found()
   end
 
