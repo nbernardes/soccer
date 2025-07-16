@@ -7,6 +7,13 @@ defmodule Soccer.Team do
 
   import Ecto.Changeset
 
+  @type t :: %__MODULE__{
+          id: integer(),
+          slug: Ecto.UUID.t(),
+          name: String.t(),
+          founded_at: Date.t()
+        }
+
   schema "teams" do
     field :slug, Ecto.UUID
     field :name, :string

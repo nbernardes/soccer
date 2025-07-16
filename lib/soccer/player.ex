@@ -7,6 +7,14 @@ defmodule Soccer.Player do
 
   import Ecto.Changeset
 
+  @type t :: %__MODULE__{
+          id: integer(),
+          slug: Ecto.UUID.t(),
+          name: String.t(),
+          age: integer(),
+          position: String.t()
+        }
+
   @player_positions ~w(forward midfielder defender goalkeeper)a
 
   schema "players" do
@@ -24,4 +32,6 @@ defmodule Soccer.Player do
     |> validate_required([:name, :age, :position])
     |> unique_constraint(:slug)
   end
+
+  def positions, do: @player_positions
 end

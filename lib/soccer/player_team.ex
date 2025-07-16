@@ -5,7 +5,15 @@ defmodule Soccer.PlayerTeam do
 
   use Ecto.Schema
 
+  alias Soccer.Player
+  alias Soccer.Team
+
   import Ecto.Changeset
+
+  @type t :: %__MODULE__{
+          player: Player.t(),
+          team: Team.t()
+        }
 
   @primary_key false
   schema "players_teams" do

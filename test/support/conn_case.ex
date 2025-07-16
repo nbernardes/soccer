@@ -28,6 +28,7 @@ defmodule SoccerWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import SoccerWeb.ConnCase
+      import Soccer.Factory
     end
   end
 

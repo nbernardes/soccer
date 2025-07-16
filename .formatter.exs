@@ -19,6 +19,10 @@
     import_fields: :*,
     import_types: :*,
     resolve: :*,
-    resolve_type: :*
+    resolve_type: :*,
+    enum: :*,
+    arg: :*,
+    types: :*,
+    union: :*
   ]
 ]

@@ -24,6 +24,7 @@ defmodule Soccer.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import Soccer.DataCase
+      import Soccer.Factory
     end
   end
 
