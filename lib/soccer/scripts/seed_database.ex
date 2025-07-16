@@ -2,12 +2,12 @@ defmodule Soccer.Scripts.SeedDatabase do
   @moduledoc """
   This module is used to seed the database.
   """
-  require Logger
-
   alias Soccer.Player
   alias Soccer.PlayerTeam
-  alias Soccer.Team
   alias Soccer.Repo
+  alias Soccer.Team
+
+  require Logger
 
   @default_total_teams 1000
   @default_min_team_size 20
@@ -102,9 +102,9 @@ defmodule Soccer.Scripts.SeedDatabase do
     first_name = Faker.Person.first_name()
 
     middle_names =
-      0..:rand.uniform(3)
-      |> Enum.map(fn _ -> Faker.Person.first_name() end)
-      |> Enum.join(" ")
+      Enum.map_join(0..:rand.uniform(3), " ", fn _ ->
+        Faker.Person.first_name()
+      end)
 
     last_name = Faker.Person.last_name()
 

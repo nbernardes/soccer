@@ -1,4 +1,5 @@
 defmodule SoccerWeb.PlayerLive.Show do
+  @moduledoc false
   use SoccerWeb, :live_view
 
   def mount(%{"slug" => slug}, _session, socket) do

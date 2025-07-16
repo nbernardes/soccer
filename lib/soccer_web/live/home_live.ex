@@ -1,4 +1,5 @@
 defmodule SoccerWeb.HomeLive do
+  @moduledoc false
   use SoccerWeb, :live_view
 
   alias Soccer.Player
@@ -6,11 +7,11 @@ defmodule SoccerWeb.HomeLive do
 
   def mount(params, _session, socket) do
     results =
-      if String.trim(params["query"] || "") != "" do
+      if String.trim(params["query"] || "") == "" do
+        []
+      else
         {:ok, results} = Soccer.search(params["query"], 10)
         results
-      else
-        []
       end
 
     socket

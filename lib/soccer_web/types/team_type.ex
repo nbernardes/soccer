@@ -4,6 +4,7 @@ defmodule SoccerWeb.Types.TeamType do
   """
   use SoccerWeb, :gql
 
+  alias Absinthe.Resolution.Helpers, as: AbsintheHelpers
   alias Soccer.Dataloader
   alias SoccerWeb.Resolvers.TeamResolver
 
@@ -17,7 +18,7 @@ defmodule SoccerWeb.Types.TeamType do
     end
 
     field :players, non_null(list_of(:player)) do
-      resolve Absinthe.Resolution.Helpers.dataloader(Dataloader)
+      resolve AbsintheHelpers.dataloader(Dataloader)
     end
   end
 end

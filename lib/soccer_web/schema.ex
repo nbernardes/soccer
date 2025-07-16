@@ -27,8 +27,8 @@ defmodule SoccerWeb.Schema do
 
   def context(ctx) do
     loader =
-      Dataloader.new()
-      |> Dataloader.add_source(
+      Dataloader.add_source(
+        Dataloader.new(),
         Soccer.Dataloader,
         Soccer.Dataloader.data()
       )

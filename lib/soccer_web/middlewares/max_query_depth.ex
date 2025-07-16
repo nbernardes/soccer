@@ -37,22 +37,24 @@ defmodule SoccerWeb.Middleware.MaxQueryDepth do
 
   def selection_depth(fragments, selections, depth) do
     selections
-    |> Enum.map(fn selection ->
-      case selection do
-        %Absinthe.Blueprint.Document.Fragment.Spread{} = fragment ->
-          selections =
-            fragments
-            |> Enum.find(fn {name, _} -> name == fragment.name end)
-            |> elem(1)
-            |> Map.get(:selections)
-
-          selection_depth(fragments, selections, depth)
-
-        field ->
-          selection_depth(fragments, field.selections, depth + 1)
-      end
-    end)
+    |> Enum.map(&do_selection_depth(&1, fragments, depth))
     |> Enum.max()
+  end
+
+  defp do_selection_depth(selection, fragments, depth) do
+    case selection do
+      %Absinthe.Blueprint.Document.Fragment.Spread{} = fragment ->
+        selections =
+          fragments
+          |> Enum.find(fn {name, _} -> name == fragment.name end)
+          |> elem(1)
+          |> Map.get(:selections)
+
+        selection_depth(fragments, selections, depth)
+
+      field ->
+        selection_depth(fragments, field.selections, depth + 1)
+    end
   end
 
   defp max_query_depth, do: Application.get_env(:soccer, :max_query_depth)

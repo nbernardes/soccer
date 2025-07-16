@@ -5,10 +5,10 @@ defmodule Soccer.PlayerTeam do
 
   use Ecto.Schema
 
+  import Ecto.Changeset
+
   alias Soccer.Player
   alias Soccer.Team
-
-  import Ecto.Changeset
 
   @type t :: %__MODULE__{
           player: Player.t(),
@@ -17,8 +17,8 @@ defmodule Soccer.PlayerTeam do
 
   @primary_key false
   schema "players_teams" do
-    belongs_to :player, Soccer.Player, primary_key: true
-    belongs_to :team, Soccer.Team, primary_key: true
+    belongs_to :player, Player, primary_key: true
+    belongs_to :team, Team, primary_key: true
 
     timestamps()
   end

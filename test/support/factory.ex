@@ -1,4 +1,5 @@
 defmodule Soccer.Factory do
+  @moduledoc false
   use ExMachina.Ecto, repo: Soccer.Repo
 
   alias Soccer.Player

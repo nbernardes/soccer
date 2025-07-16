@@ -7,6 +7,7 @@ defmodule Soccer.Dataloader do
 
   This is used for field resolution.
   """
+  # sobelow_skip ["SQL.Query"]
   def data do
     Dataloader.Ecto.new(Soccer.Repo, query: &query/2)
   end

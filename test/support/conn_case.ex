@@ -19,16 +19,16 @@ defmodule SoccerWeb.ConnCase do
 
   using do
     quote do
-      # The default endpoint for testing
-      @endpoint SoccerWeb.Endpoint
-
       use SoccerWeb, :verified_routes
 
       # Import conveniences for testing with connections
-      import Plug.Conn
       import Phoenix.ConnTest
-      import SoccerWeb.ConnCase
+      import Plug.Conn
       import Soccer.Factory
+      import SoccerWeb.ConnCase
+
+      # The default endpoint for testing
+      @endpoint SoccerWeb.Endpoint
     end
   end
 

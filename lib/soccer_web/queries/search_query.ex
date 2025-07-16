@@ -5,9 +5,9 @@ defmodule SoccerWeb.Queries.SearchQuery do
   """
   use SoccerWeb, :gql
 
-  alias SoccerWeb.Resolvers.SearchResolver
   alias Soccer.Player
   alias Soccer.Team
+  alias SoccerWeb.Resolvers.SearchResolver
 
   @default_search_limit 10
 

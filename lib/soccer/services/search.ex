@@ -5,8 +5,8 @@ defmodule Soccer.Services.Search do
   import Ecto.Query
 
   alias Soccer.Player
-  alias Soccer.Team
   alias Soccer.Repo
+  alias Soccer.Team
 
   @max_search_limit 50
 

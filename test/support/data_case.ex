@@ -16,15 +16,17 @@ defmodule Soccer.DataCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+
   using do
     quote do
-      alias Soccer.Repo
-
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
       import Soccer.DataCase
       import Soccer.Factory
+
+      alias Soccer.Repo
     end
   end
 
@@ -38,11 +40,11 @@ defmodule Soccer.DataCase do
   """
   def setup_sandbox(tags) do
     pid =
-      Ecto.Adapters.SQL.Sandbox.start_owner!(Soccer.Repo,
+      Sandbox.start_owner!(Soccer.Repo,
         shared: not tags[:async]
       )
 
-    on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
+    on_exit(fn -> Sandbox.stop_owner(pid) end)
   end
 
   @doc """
