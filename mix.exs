@@ -32,6 +32,8 @@ defmodule Soccer.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:absinthe, "~> 1.7"},
+      {:absinthe_plug, "~> 1.5"},
       {:bandit, "~> 1.5"},
       {:dns_cluster, "~> 0.1.1"},
       {:ecto_sql, "~> 3.10"},
@@ -73,7 +75,10 @@ defmodule Soccer.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
+      "assets.setup": [
+        "tailwind.install --if-missing",
+        "esbuild.install --if-missing"
+      ],
       "assets.build": ["tailwind soccer", "esbuild soccer"],
       "assets.deploy": [
         "tailwind soccer --minify",

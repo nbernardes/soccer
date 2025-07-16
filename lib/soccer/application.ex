@@ -10,7 +10,8 @@ defmodule Soccer.Application do
     children = [
       SoccerWeb.Telemetry,
       Soccer.Repo,
-      {DNSCluster, query: Application.get_env(:soccer, :dns_cluster_query) || :ignore},
+      {DNSCluster,
+       query: Application.get_env(:soccer, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Soccer.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: Soccer.Finch},

@@ -17,7 +17,8 @@ config :soccer, Soccer.Repo,
 # you can enable the server option below.
 config :soccer, SoccerWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "TM4Wc5hF/8LQ8Ak8y9GOMuXQZyTQP3+npOgTu0YuHNxU2bH40fzD3GqEIS/10ubT",
+  secret_key_base:
+    "TM4Wc5hF/8LQ8Ak8y9GOMuXQZyTQP3+npOgTu0YuHNxU2bH40fzD3GqEIS/10ubT",
   server: false
 
 # In test we don't send emails

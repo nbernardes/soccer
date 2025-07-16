@@ -107,6 +107,12 @@ defmodule SoccerWeb do
     end
   end
 
+  def gql do
+    quote do
+      use Absinthe.Schema.Notation
+    end
+  end
+
   @doc """
   When used, dispatch to the appropriate controller/live_view/etc.
   """

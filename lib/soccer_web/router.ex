@@ -20,11 +20,6 @@ defmodule SoccerWeb.Router do
     get "/", PageController, :home
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", SoccerWeb do
-  #   pipe_through :api
-  # end
-
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:soccer, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put
@@ -40,5 +35,16 @@ defmodule SoccerWeb.Router do
       live_dashboard "/dashboard", metrics: SoccerWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
+  end
+
+  scope "/" do
+    pipe_through :api
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: SoccerWeb.Schema,
+      interface: :simple,
+      context: %{pubsub: SoccerWeb.Endpoint}
+
+    forward "/", Absinthe.Plug, schema: SoccerWeb.Schema
   end
 end

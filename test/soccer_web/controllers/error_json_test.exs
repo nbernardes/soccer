@@ -2,7 +2,9 @@ defmodule SoccerWeb.ErrorJSONTest do
   use SoccerWeb.ConnCase, async: true
 
   test "renders 404" do
-    assert SoccerWeb.ErrorJSON.render("404.json", %{}) == %{errors: %{detail: "Not Found"}}
+    assert SoccerWeb.ErrorJSON.render("404.json", %{}) == %{
+             errors: %{detail: "Not Found"}
+           }
   end
 
   test "renders 500" do
