@@ -1,18 +1,14 @@
 # Soccer
 
-To start your Phoenix server:
+Small app that provides a GraphQL API and a small LiveView UI of faked soccer players and teams.
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+## To run the app locally
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+- Make sure you have all correct versions installed from `mise.toml`
+- Make sure you have a postgres client setup and ready for database creation
+- Run `mix setup` and it will do the full setup including populating your database
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## App URLs
 
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+- LiveViewUI via [localhost:4000](http://localhost:4000)
+- GraphiQL interface via [localhost:4000/api/graphiql](http://localhost:4000/api/graphiql)
